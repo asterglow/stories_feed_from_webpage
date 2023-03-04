@@ -13,7 +13,7 @@ class StoriesPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Top Stories'),
+        title: const Text('NDTV Top Stories'),
         actions: [
           IconButton(
               onPressed: () {
@@ -41,10 +41,11 @@ class StoriesPage extends StatelessWidget {
                           textAlign: TextAlign.center,
                         )
                       : ListView.builder(
-                          itemCount: value.map['stories'].length,
+                          itemCount: value.map['rss']['channel']['item'].length,
                           itemBuilder: (context, index) {
+                            // return Text('hi');
                             return StoriesCard(
-                                map: value.map['stories'][index]);
+                                map: value.map['rss']['channel']['item'][index]);
                           },
                         );
             },

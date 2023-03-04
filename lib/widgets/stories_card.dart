@@ -13,29 +13,27 @@ class StoriesCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.network(
-              map['image'],
-              height: 150,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) return child;
-                return const Text('Loading ...');
-              },
-              // width: 250,
-              // alignment: Alignment.topCenter,
-              // scale: sqrt1_2,
-            ),
+            // Image.network(
+            //   map['image'],
+            //   height: 150,
+            //   loadingBuilder: (context, child, loadingProgress) {
+            //     if (loadingProgress == null) return child;
+            //     return const Text('Loading ...');
+            //   },
+            //   // width: 250,
+            //   // alignment: Alignment.topCenter,
+            //   // scale: sqrt1_2,
+            // ),
             const SizedBox(height: 6),
             Text(
-              map['heading'],
+              '${map['pubDate']}',
               style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
             ),
-            const SizedBox(
-              height: 6,
-            ),
-            Text(
-              '${map['story']}',
-              style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
-            ),
+            const SizedBox(height: 6),
+            // Text(
+            //   '${map['story']}',
+            //   style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
+            // ),
             // SizedBox(
             //   height: 8,
             // ),
