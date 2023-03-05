@@ -8,7 +8,7 @@ import 'package:provider_readonlinejson/stories_page.dart';
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

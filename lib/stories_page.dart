@@ -1,11 +1,14 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_readonlinejson/online_data.dart';
 import 'package:provider_readonlinejson/widgets/stories_card.dart';
-
+import 'package:intl/intl.dart';
 
 class StoriesPage extends StatelessWidget {
-  const StoriesPage({super.key});
+  StoriesPage({super.key});
+  DateTime now = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,20 @@ class StoriesPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NDTV Top Stories'),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('NDTV Top Stories'),
+            SizedBox(
+              height: 3,
+            ),
+            Text(
+              DateFormat('yyyy-MM-dd hh:mm:ss').format(now),
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w300),
+            ),
+          ],
+        ),
+        leading: Icon(Icons.rss_feed_sharp),
         actions: [
           IconButton(
               onPressed: () {
@@ -21,7 +37,7 @@ class StoriesPage extends StatelessWidget {
                 // sleep(Duration(seconds: 5));
                 context.read<OnlineData>().fetchData;
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.refresh,
               )),
         ],
@@ -34,7 +50,7 @@ class StoriesPage extends StatelessWidget {
           child: Consumer<OnlineData>(
             builder: (context, value, child) {
               return value.map.isEmpty && !value.error
-                  ? const CircularProgressIndicator()
+                  ? CircularProgressIndicator()
                   : value.error
                       ? Text(
                           'Oops, something went wrong. \n ${value.errorMessage}',
@@ -43,9 +59,11 @@ class StoriesPage extends StatelessWidget {
                       : ListView.builder(
                           itemCount: value.map['rss']['channel']['item'].length,
                           itemBuilder: (context, index) {
-                            // return Text('hi');
+                            // return Text('hello AsterGlow');
                             return StoriesCard(
                                 map: value.map['rss']['channel']['item'][index]);
+                            // return Text(
+                            //     '${value.map['rss']['channel']['item'][index]['pubDate']}');
                           },
                         );
             },
@@ -55,5 +73,3 @@ class StoriesPage extends StatelessWidget {
     );
   }
 }
-
-

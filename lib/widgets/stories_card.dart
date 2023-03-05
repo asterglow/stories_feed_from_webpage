@@ -1,15 +1,17 @@
+// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class StoriesCard extends StatelessWidget {
-  const StoriesCard({required this.map, super.key});
-  final Map<String, dynamic> map;
+  StoriesCard({required this.map, super.key});
+  Map<String, dynamic> map;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 10,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 6),
+        padding: EdgeInsets.fromLTRB(16, 8, 16, 6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -24,19 +26,19 @@ class StoriesCard extends StatelessWidget {
             //   // alignment: Alignment.topCenter,
             //   // scale: sqrt1_2,
             // ),
-            const SizedBox(height: 6),
+            // SizedBox(height: 6),
             Text(
-              '${map['pubDate']}',
-              style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
+              '${map['title']}',
+              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
             ),
-            const SizedBox(height: 6),
-            // Text(
-            //   '${map['story']}',
-            //   style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
-            // ),
-            // SizedBox(
-            //   height: 8,
-            // ),
+            SizedBox(height: 6),
+            Text(
+              '${map['description']}',
+              style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
+            ),
+            SizedBox(
+              height: 8,
+            ),
           ],
         ),
       ),
